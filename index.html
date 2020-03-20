@@ -1,0 +1,148 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+            width: 25px;
+            height: 25px;
+            float: left;
+            margin: 10px 10px;
+        }
+        
+        .skin0 {
+            background-color: grey;
+            margin-left: 0;
+        }
+        
+        .skin1 {
+            background-color: purple;
+        }
+        
+        .skin2 {
+            background-color: pink;
+        }
+        
+        .skin3 {
+            background-color: blue;
+        }
+        
+        .skin4 {
+            background-color: yellow;
+        }
+        
+        .skin5 {
+            background-color: lightgreen;
+        }
+        
+        #skin {
+            border: solid 1px grey;
+            width: 550px;
+            height: 40px;
+        }
+        
+        #div0 {
+            width: 550px;
+            height: 50px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        
+        #selected {
+            margin-top: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset style="width:550px">
+        <legend style="color: red;font-size: 50px;">网页换肤</legend>
+        <ul id="skin">
+            <li class="skin0" id="selected" title="灰色"></li>
+            <li class="skin1" title="紫色"></li>
+            <li class="skin2" title="粉色"></li>
+            <li class="skin3" title="天蓝色"></li>
+            <li class="skin4" title="黄色"></li>
+            <li class="skin5" title="绿色"></li>
+        </ul>
+        <div id="div0" style="background-color:grey;">
+            LocalStorage将数据保存在客户端本地的硬件设备中，即使浏览器被关闭了，该数据仍然存在，下次打开浏览器访问网站时仍然可以继续使用。
+        </div>
+    </fieldset>
+</body>
+<script>
+    var skin = document.getElementById("skin");
+    var div0 = document.getElementById("div0");
+    var lis = skin.getElementsByTagName("li");
+    //点击事件
+    lis[0].onclick = function() {
+        this.setAttribute("id", "selected");
+        this.nextElementSibling.removeAttribute("id");
+        this.nextElementSibling.nextElementSibling.removeAttribute("id");
+        this.nextElementSibling.nextElementSibling.nextElementSibling.removeAttribute("id");
+        this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.removeAttribute("id");
+        this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.removeAttribute("id");
+        div0.style.backgroundColor = "grey";
+        localStorage.setItem("skin", "grey");
+    }
+    lis[1].onclick = function() {
+        this.setAttribute("id", "selected");
+        this.previousElementSibling.removeAttribute("id");
+        this.nextElementSibling.removeAttribute("id");
+        this.nextElementSibling.nextElementSibling.removeAttribute("id");
+        this.nextElementSibling.nextElementSibling.nextElementSibling.removeAttribute("id");
+        this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.removeAttribute("id");
+        div0.style.backgroundColor = "purple";
+        localStorage.setItem("skin", "purple");
+    }
+    lis[2].onclick = function() {
+        this.setAttribute("id", "selected");
+        this.previousElementSibling.previousElementSibling.removeAttribute("id");
+        this.previousElementSibling.removeAttribute("id");
+        this.nextElementSibling.removeAttribute("id");
+        this.nextElementSibling.nextElementSibling.removeAttribute("id");
+        this.nextElementSibling.nextElementSibling.nextElementSibling.removeAttribute("id");
+        div0.style.backgroundColor = "pink";
+        localStorage.setItem("skin", "pink");
+    }
+    lis[3].onclick = function() {
+        this.setAttribute("id", "selected");
+        this.previousElementSibling.previousElementSibling.previousElementSibling.removeAttribute("id");
+        this.previousElementSibling.previousElementSibling.removeAttribute("id");
+        this.previousElementSibling.removeAttribute("id");
+        this.nextElementSibling.removeAttribute("id");
+        this.nextElementSibling.nextElementSibling.removeAttribute("id");
+        div0.style.backgroundColor = "blue";
+        localStorage.setItem("skin", "blue");
+    }
+    lis[4].onclick = function() {
+        this.setAttribute("id", "selected");
+        this.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.removeAttribute("id");
+        this.previousElementSibling.previousElementSibling.previousElementSibling.removeAttribute("id");
+        this.previousElementSibling.previousElementSibling.removeAttribute("id");
+        this.previousElementSibling.removeAttribute("id");
+        this.nextElementSibling.removeAttribute("id");
+        div0.style.backgroundColor = "yellow";
+        localStorage.setItem("skin", "yellow");
+    }
+    lis[5].onclick = function() {
+        this.setAttribute("id", "selected");
+        this.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.removeAttribute("id");
+        this.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.removeAttribute("id");
+        this.previousElementSibling.previousElementSibling.previousElementSibling.removeAttribute("id");
+        this.previousElementSibling.previousElementSibling.removeAttribute("id");
+        this.previousElementSibling.removeAttribute("id");
+        div0.style.backgroundColor = "green";
+        localStorage.setItem("skin", "green");
+        localStorage.setItem("id", "selected");
+    }
+
+    window.onload = function() {
+        div0.style.backgroundColor = localStorage.getItem("skin");
+        skin.style.id = localStorage.getItem("id");
+    }
+</script>
+
+</html>
